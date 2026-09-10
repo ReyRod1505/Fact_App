@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ni.edu.uam.fast_app.controller.MenuPrincipalController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ni.edu.uam.fast_app.controller.MenuPrincipalController">
 
-    <Label text="¡Bienvenido a Fast App!" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-    <Label text="Sistema de Facturación Básico"/>
+    <!-- PARTE SUPERIOR: MenuBar + ToolBar -->
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Archivo">
+                    <MenuItem fx:id="mnuProductos" text="Productos" onAction="#abrirProductos"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem fx:id="mnuSalir" text="Salir" onAction="#salir"/>
+                </Menu>
+            </MenuBar>
+            <ToolBar styleClass="toolbar">
+                <Button fx:id="btnProductos" text="Productos" onAction="#abrirProductos"
+                        styleClass="btn-primary"/>
+                <Button fx:id="btnSalir" text="Salir" onAction="#salir"
+                        styleClass="btn-exit"/>
+            </ToolBar>
+        </VBox>
+    </top>
 
-    <Button text="Ir a Productos" onAction="#onIrAProductosClick" prefWidth="150"/>
-    <Button text="Salir" onAction="#onSalirClick" prefWidth="150"/>
-</VBox>
+    <!-- CENTRO: Label principal -->
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Sistema de facturación"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Seleccione una opción del menú o la barra de herramientas"
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+    </center>
+
+</BorderPane>

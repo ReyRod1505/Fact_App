@@ -1,0 +1,208 @@
+/* ===== GENERAL ===== */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f6f9;
+}
+
+/* ===== ENCABEZADO ===== */
+.header {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 18 24;
+}
+
+.header .label {
+    -fx-text-fill: white;
+}
+
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.header-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #bdc3c7;
+}
+
+/* ===== TARJETAS DEL MENU ===== */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #dce1e8;
+    -fx-border-width: 1;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.card:hover {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.2), 10, 0, 0, 3);
+}
+
+.card-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.card-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.card-icon {
+    -fx-font-size: 28px;
+    -fx-text-fill: #3498db;
+}
+
+/* ===== BOTONES ===== */
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.btn-success {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-success:hover {
+    -fx-background-color: #219a52;
+}
+
+.btn-danger {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #c0392b;
+}
+
+.btn-secondary {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+.btn-exit {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e74c3c;
+    -fx-border-color: #e74c3c;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.btn-exit:hover {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+    -fx-background-color: white;
+    -fx-padding: 10 16;
+    -fx-border-color: #dce1e8;
+    -fx-border-width: 0 0 1 0;
+    -fx-spacing: 8;
+}
+
+/* ===== TABLA ===== */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dce1e8;
+    -fx-border-radius: 4;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #dce1e8;
+    -fx-padding: 8;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #d5e8f7;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #2c3e50;
+}
+
+/* ===== FORMULARIO ===== */
+.form-panel {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-color: #dce1e8;
+    -fx-border-width: 0 0 0 1;
+}
+
+.form-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 0 0 10 0;
+}
+
+.form-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555;
+    -fx-font-weight: bold;
+}
+
+.text-field, .combo-box {
+    -fx-padding: 7 10;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: #ccd1d9;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+}
+
+/* ===== STATUS BAR ===== */
+.status-bar {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 6 16;
+    -fx-border-color: #dce1e8;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-bar .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+}
