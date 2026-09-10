@@ -1,4 +1,4 @@
-package ni.edu.uam.fast_app.controller;
+package ni.edu.uam.facturacion.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,8 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import ni.edu.uam.fast_app.model.Categoria;
-import ni.edu.uam.fast_app.model.Producto;
+import ni.edu.uam.facturacion.model.Categoria;
+import ni.edu.uam.facturacion.model.Producto;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -26,26 +26,24 @@ public class ProductoController {
     @FXML private ImageView imgProducto;
     @FXML private TableView<Producto> tblProductos;
 
-    @FXML private TableColumn<Producto, String> colCodigo;
-    @FXML private TableColumn<Producto, String> colNombre;
+    @FXML private TableColumn<Producto, String>    colCodigo;
+    @FXML private TableColumn<Producto, String>    colNombre;
     @FXML private TableColumn<Producto, Categoria> colCategoria;
     @FXML private TableColumn<Producto, BigDecimal> colPrecio;
-    @FXML private TableColumn<Producto, Integer> colExistencia;
-    @FXML private TableColumn<Producto, Boolean> colActivo;
+    @FXML private TableColumn<Producto, Integer>   colExistencia;
+    @FXML private TableColumn<Producto, Boolean>   colActivo;
 
-    private final ObservableList<Producto> productos =
-        FXCollections.observableArrayList();
+    private final ObservableList<Producto> productos = FXCollections.observableArrayList();
     private String rutaImagen;
 
     @FXML
     private void initialize() {
-        // Categorías temporales
         cmbCategoria.setItems(FXCollections.observableArrayList(
             new Categoria(1, "Alimentos", true),
-            new Categoria(2, "Bebidas", true),
-            new Categoria(3, "Limpieza", true)));
+            new Categoria(2, "Bebidas",   true),
+            new Categoria(3, "Limpieza",  true)
+        ));
 
-        // Configurar columnas del TableView
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
@@ -60,6 +58,7 @@ public class ProductoController {
     @FXML
     private void seleccionarImagen() {
         FileChooser chooser = new FileChooser();
+        chooser.setTitle("Seleccionar imagen del producto");
         chooser.getExtensionFilters().add(
             new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
         File archivo = chooser.showOpenDialog(txtCodigo.getScene().getWindow());
@@ -72,26 +71,34 @@ public class ProductoController {
     @FXML
     private void guardar() {
         if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank()
-            || txtPrecio.getText().isBlank() || txtExistencia.getText().isBlank()
-            || cmbCategoria.getValue() == null) {
-            mensaje(Alert.AlertType.WARNING, "Complete los campos obligatorios.");
+                || txtPrecio.getText().isBlank() || txtExistencia.getText().isBlank()
+                || cmbCategoria.getValue() == null) {
+            alerta(Alert.AlertType.WARNING, "Complete todos los campos obligatorios.");
             return;
         }
         try {
-            BigDecimal precio = new BigDecimal(txtPrecio.getText().trim());
-            int existencia = Integer.parseInt(txtExistencia.getText().trim());
-            if (precio.signum() <= 0 || existencia < 0) {
-                mensaje(Alert.AlertType.WARNING,
-                    "Precio mayor que cero y existencia no negativa.");
+            BigDecimal precio     = new BigDecimal(txtPrecio.getText().trim());
+            int        existencia = Integer.parseInt(txtExistencia.getText().trim());
+            if (precio.signum() <= 0) {
+                alerta(Alert.AlertType.WARNING, "El precio debe ser mayor que cero.");
                 return;
             }
-            productos.add(new Producto(null, txtCodigo.getText().trim(),
-                txtNombre.getText().trim(), cmbCategoria.getValue(), precio,
-                existencia, rutaImagen, chkActivo.isSelected()));
-            mensaje(Alert.AlertType.INFORMATION, "Producto agregado correctamente.");
+            if (existencia < 0) {
+                alerta(Alert.AlertType.WARNING, "La existencia no puede ser negativa.");
+                return;
+            }
+            productos.add(new Producto(
+                productos.size() + 1,
+                txtCodigo.getText().trim(),
+                txtNombre.getText().trim(),
+                cmbCategoria.getValue(),
+                precio, existencia, rutaImagen,
+                chkActivo.isSelected()
+            ));
+            alerta(Alert.AlertType.INFORMATION, "Producto registrado correctamente.");
             limpiar();
         } catch (NumberFormatException e) {
-            mensaje(Alert.AlertType.ERROR, "Precio o existencia no válidos.");
+            alerta(Alert.AlertType.ERROR, "Precio o existencia no son valores válidos.");
         }
     }
 
@@ -101,17 +108,15 @@ public class ProductoController {
     }
 
     private void limpiar() {
-        txtCodigo.clear();
-        txtNombre.clear();
-        txtPrecio.clear();
-        txtExistencia.clear();
+        txtCodigo.clear(); txtNombre.clear();
+        txtPrecio.clear(); txtExistencia.clear();
         cmbCategoria.getSelectionModel().clearSelection();
         chkActivo.setSelected(true);
         imgProducto.setImage(null);
         rutaImagen = null;
     }
 
-    private void mensaje(Alert.AlertType tipo, String texto) {
-        new Alert(tipo, texto, ButtonType.OK).showAndWait();
+    private void alerta(Alert.AlertType tipo, String mensaje) {
+        new Alert(tipo, mensaje, ButtonType.OK).showAndWait();
     }
 }

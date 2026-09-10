@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ni.edu.uam.facturacion.controller.MenuPrincipalController">
+
+    <top>
+        <VBox>
+            <!-- Barra de menú -->
+            <MenuBar>
+                <Menu text="Archivo">
+                    <MenuItem fx:id="mnuProductos" text="Productos"  onAction="#abrirProductos"/>
+                    <MenuItem fx:id="mnuEmpleados" text="Empleados"  onAction="#abrirEmpleados"/>
+                    <MenuItem fx:id="mnuCargos"    text="Cargos"     onAction="#abrirCargos"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem fx:id="mnuSalir"     text="Salir"      onAction="#salir"/>
+                </Menu>
+            </MenuBar>
+
+            <!-- Barra de herramientas -->
+            <ToolBar style="-fx-background-color: #ecf0f1; -fx-padding: 6 12;">
+                <Button fx:id="btnProductos" text="📦 Productos" onAction="#abrirProductos"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 6 14;"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnEmpleados" text="👤 Empleados" onAction="#abrirEmpleados"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 6 14;"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnCargos"    text="🏷 Cargos"    onAction="#abrirCargos"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 6 14;"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnSalir"     text="⏻ Salir"     onAction="#salir"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 6 14;"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Centro -->
+    <center>
+        <VBox alignment="CENTER" spacing="12"
+              style="-fx-background-color: #f4f6f9;">
+            <Label text="Sistema de facturación"
+                   style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Seleccione una opción del menú o la barra de herramientas"
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+            <HBox alignment="CENTER" spacing="30" style="-fx-padding: 30 0 0 0;">
+                <VBox alignment="CENTER" spacing="6" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dce1e8; -fx-border-radius: 8; -fx-min-width: 140;" onMouseClicked="#abrirProductos">
+                    <Label text="📦" style="-fx-font-size: 32px;"/>
+                    <Label text="Productos"   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="6" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dce1e8; -fx-border-radius: 8; -fx-min-width: 140;" onMouseClicked="#abrirEmpleados">
+                    <Label text="👤" style="-fx-font-size: 32px;"/>
+                    <Label text="Empleados"   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="6" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dce1e8; -fx-border-radius: 8; -fx-min-width: 140;" onMouseClicked="#abrirCargos">
+                    <Label text="🏷" style="-fx-font-size: 32px;"/>
+                    <Label text="Cargos"      style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Barra de estado inferior -->
+    <bottom>
+        <HBox style="-fx-background-color: #ecf0f1; -fx-padding: 5 14; -fx-border-color: #dce1e8; -fx-border-width: 1 0 0 0;">
+            <Label text="Sistema de Facturación v1.0  |  ni.edu.uam"
+                   style="-fx-font-size: 11px; -fx-text-fill: #95a5a6;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

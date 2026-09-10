@@ -1,7 +1,8 @@
-package ni.edu.uam.fast_app.model;
+package ni.edu.uam.facturacion.model;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

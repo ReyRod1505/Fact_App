@@ -1,11 +1,13 @@
-package ni.edu.uam.fast_app.utils;
+package ni.edu.uam.facturacion.util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import java.io.IOException;
 
 public final class SceneManager {
+
     private SceneManager() { }
 
     public static void abrirVentana(String recurso, String titulo) throws IOException {
@@ -15,8 +17,6 @@ public final class SceneManager {
         Stage stage = new Stage();
         stage.setTitle(titulo);
         Scene scene = new Scene(new FXMLLoader(url).load());
-        scene.getStylesheets().add(
-            SceneManager.class.getResource("/ni.edu.uam.fast_app/css/styles.css").toExternalForm());
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
