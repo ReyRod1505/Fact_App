@@ -8,9 +8,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import ni.edu.uam.facturacion.model.Categoria;
 import ni.edu.uam.facturacion.model.Producto;
+import ni.edu.uam.facturacion.util.DataStore;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -26,23 +26,20 @@ public class ProductoController {
     @FXML private ImageView imgProducto;
     @FXML private TableView<Producto> tblProductos;
 
-    @FXML private TableColumn<Producto, String>    colCodigo;
-    @FXML private TableColumn<Producto, String>    colNombre;
-    @FXML private TableColumn<Producto, Categoria> colCategoria;
+    @FXML private TableColumn<Producto, String>     colCodigo;
+    @FXML private TableColumn<Producto, String>     colNombre;
+    @FXML private TableColumn<Producto, Categoria>  colCategoria;
     @FXML private TableColumn<Producto, BigDecimal> colPrecio;
-    @FXML private TableColumn<Producto, Integer>   colExistencia;
-    @FXML private TableColumn<Producto, Boolean>   colActivo;
+    @FXML private TableColumn<Producto, Integer>    colExistencia;
+    @FXML private TableColumn<Producto, Boolean>    colActivo;
 
     private final ObservableList<Producto> productos = FXCollections.observableArrayList();
     private String rutaImagen;
 
     @FXML
     private void initialize() {
-        cmbCategoria.setItems(FXCollections.observableArrayList(
-            new Categoria(1, "Alimentos", true),
-            new Categoria(2, "Bebidas",   true),
-            new Categoria(3, "Limpieza",  true)
-        ));
+        // Usa la lista compartida de categorías (incluye las creadas en sesión)
+        cmbCategoria.setItems(DataStore.getCategorias());
 
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -100,11 +97,6 @@ public class ProductoController {
         } catch (NumberFormatException e) {
             alerta(Alert.AlertType.ERROR, "Precio o existencia no son valores válidos.");
         }
-    }
-
-    @FXML
-    private void cerrar() {
-        ((Stage) txtCodigo.getScene().getWindow()).close();
     }
 
     private void limpiar() {

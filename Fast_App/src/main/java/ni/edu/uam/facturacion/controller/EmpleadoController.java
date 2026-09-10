@@ -5,20 +5,20 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import ni.edu.uam.facturacion.model.Cargo;
 import ni.edu.uam.facturacion.model.Empleado;
+import ni.edu.uam.facturacion.util.DataStore;
 
 import java.time.LocalDate;
 
 public class EmpleadoController {
 
-    @FXML private TextField            txtNombres;
-    @FXML private TextField            txtApellidos;
-    @FXML private ComboBox<Cargo>      cmbCargo;
-    @FXML private DatePicker           dpFechaContratacion;
-    @FXML private CheckBox             chkActivo;
-    @FXML private TableView<Empleado>  tblEmpleados;
+    @FXML private TextField           txtNombres;
+    @FXML private TextField           txtApellidos;
+    @FXML private ComboBox<Cargo>     cmbCargo;
+    @FXML private DatePicker          dpFechaContratacion;
+    @FXML private CheckBox            chkActivo;
+    @FXML private TableView<Empleado> tblEmpleados;
 
     @FXML private TableColumn<Empleado, String>    colNombres;
     @FXML private TableColumn<Empleado, String>    colApellidos;
@@ -30,11 +30,8 @@ public class EmpleadoController {
 
     @FXML
     private void initialize() {
-        cmbCargo.setItems(FXCollections.observableArrayList(
-            new Cargo(1, "Gerente",   "Gerente general"),
-            new Cargo(2, "Cajero",    "Atiende la caja"),
-            new Cargo(3, "Bodeguero", "Maneja el inventario")
-        ));
+        // Usa la lista compartida de cargos (incluye los creados en sesión)
+        cmbCargo.setItems(DataStore.getCargos());
 
         colNombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
         colApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
@@ -65,11 +62,6 @@ public class EmpleadoController {
         ));
         alerta(Alert.AlertType.INFORMATION, "Empleado registrado correctamente.");
         limpiar();
-    }
-
-    @FXML
-    private void cerrar() {
-        ((Stage) txtNombres.getScene().getWindow()).close();
     }
 
     private void limpiar() {
