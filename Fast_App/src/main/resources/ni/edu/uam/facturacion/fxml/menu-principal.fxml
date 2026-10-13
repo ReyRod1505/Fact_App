@@ -18,71 +18,80 @@
 
     <top>
         <VBox>
-            <!-- ===== BARRA DE MENÚ ===== -->
-            <MenuBar>
+            <!-- Barra de menu -->
+            <MenuBar style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0;">
                 <Menu text="Archivo">
-                    <MenuItem text="🏠 Inicio"       onAction="#mostrarInicio"/>
-                    <MenuItem fx:id="mnuProductos"  text="📦 Productos"   onAction="#abrirProductos"/>
-                    <MenuItem fx:id="mnuEmpleados"  text="👤 Empleados"   onAction="#abrirEmpleados"/>
-                    <MenuItem fx:id="mnuCargos"     text="🏷 Cargos"      onAction="#abrirCargos"/>
-                    <MenuItem fx:id="mnuCategorias" text="📁 Categorías"  onAction="#abrirCategorias"/>
+                    <MenuItem text="🏠 Inicio" onAction="#mostrarInicio"/>
+                    <MenuItem fx:id="mnuProductos" text="📦 Productos" onAction="#abrirProductos"/>
+                    <MenuItem fx:id="mnuEmpleados" text="👤 Empleados" onAction="#abrirEmpleados"/>
+                    <MenuItem fx:id="mnuCargos" text="🏷 Cargos" onAction="#abrirCargos"/>
+                    <MenuItem fx:id="mnuCategorias" text="📁 Categorías" onAction="#abrirCategorias"/>
+                    <MenuItem fx:id="mnuProcesos" text="⚙️ Procesos" onAction="#abrirProcesos"/>
                     <SeparatorMenuItem/>
-                    <MenuItem fx:id="mnuSalir"      text="⏻ Salir"       onAction="#salir"/>
+                    <MenuItem fx:id="mnuSalir" text="⏻ Salir" onAction="#salir"/>
                 </Menu>
             </MenuBar>
 
-            <!-- ===== BARRA DE HERRAMIENTAS (solo íconos 32×32) ===== -->
-            <ToolBar style="-fx-background-color: #2c3e50; -fx-padding: 4 12;">
+            <!-- Barra de herramientas con iconos -->
+            <ToolBar style="-fx-background-color: #ffffff; -fx-padding: 4 12; -fx-spacing: 4; -fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0;">
 
                 <!-- Inicio -->
                 <Button fx:id="btnInicio" onAction="#mostrarInicio"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="🏠" style="-fx-font-size: 22px;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="🏠" style="-fx-font-size: 24px;"/></graphic>
                     <tooltip><Tooltip text="Inicio"/></tooltip>
                 </Button>
 
-                <Separator orientation="VERTICAL" style="-fx-background-color: #4a6278;"/>
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 4;"/>
 
                 <!-- Productos -->
                 <Button fx:id="btnProductos" onAction="#abrirProductos"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="📦" style="-fx-font-size: 22px;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="📦" style="-fx-font-size: 24px;"/></graphic>
                     <tooltip><Tooltip text="Productos"/></tooltip>
                 </Button>
 
                 <!-- Empleados -->
                 <Button fx:id="btnEmpleados" onAction="#abrirEmpleados"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="👤" style="-fx-font-size: 22px;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="👤" style="-fx-font-size: 24px;"/></graphic>
                     <tooltip><Tooltip text="Empleados"/></tooltip>
                 </Button>
 
                 <!-- Cargos -->
                 <Button fx:id="btnCargos" onAction="#abrirCargos"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="🏷" style="-fx-font-size: 22px;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="🏷" style="-fx-font-size: 24px;"/></graphic>
                     <tooltip><Tooltip text="Cargos"/></tooltip>
                 </Button>
 
-                <!-- Categorías -->
+                <!-- Categorias -->
                 <Button fx:id="btnCategorias" onAction="#abrirCategorias"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="📁" style="-fx-font-size: 22px;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="📁" style="-fx-font-size: 24px;"/></graphic>
                     <tooltip><Tooltip text="Categorías"/></tooltip>
                 </Button>
 
-                <Separator orientation="VERTICAL" style="-fx-background-color: #4a6278;"/>
+                <!-- Procesos (Hilos) -->
+                <Button fx:id="btnProcesos" onAction="#abrirProcesos"
+                        style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="⚙️" style="-fx-font-size: 24px;"/></graphic>
+                    <tooltip><Tooltip text="Procesos (Hilos)"/></tooltip>
+                </Button>
+
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 4;"/>
 
                 <!-- Salir -->
                 <Button fx:id="btnSalir" onAction="#salir"
                         style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 4; -fx-background-radius: 6;"
-                        prefWidth="40" prefHeight="40">
-                    <graphic><Label text="⏻" style="-fx-font-size: 22px; -fx-text-fill: #e74c3c;"/></graphic>
+                        prefWidth="42" prefHeight="42">
+                    <graphic><Label text="⏻" style="-fx-font-size: 24px; -fx-text-fill: #e11d48;"/></graphic>
                     <tooltip><Tooltip text="Salir"/></tooltip>
                 </Button>
 
@@ -90,15 +99,15 @@
         </VBox>
     </top>
 
-    <!-- ===== ÁREA DE CONTENIDO (se reemplaza al navegar) ===== -->
+    <!-- Area de contenido central -->
     <center>
         <StackPane fx:id="contenido"/>
     </center>
 
-    <!-- ===== BARRA DE ESTADO ===== -->
+    <!-- Barra de estado -->
     <bottom>
         <Label text="  Sistema de Facturación v1.0  |  ni.edu.uam"
-               style="-fx-background-color: #ecf0f1; -fx-padding: 5 14; -fx-font-size: 11px; -fx-text-fill: #95a5a6; -fx-border-color: #dce1e8; -fx-border-width: 1 0 0 0;"/>
+               style="-fx-background-color: #f8fafc; -fx-padding: 4 12; -fx-font-size: 11px; -fx-text-fill: #94a3b8; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;"/>
     </bottom>
 
 </BorderPane>
